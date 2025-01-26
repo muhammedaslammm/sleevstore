@@ -4,7 +4,8 @@
   "description": "this is an application build for the sleevster pvt",
   "main": "index.js",
   "scripts": {
-    "start": "npx parcel ./src/app.html"
+    "start": "npx parcel src/app.html",
+    "clean": "rm -rf .parcel-cache dist"
   },
   "author": "Muhammed Aslam",
   "license": "ISC",
