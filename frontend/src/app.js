@@ -4,6 +4,8 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Error from "./components/Error";
 import Header from "./components/Header";
 import Home from "./pages/Home.jsx";
+import NewArrival from "./pages/NewArrival.jsx";
+import AboutUs from "./pages/AboutUs.jsx";
 
 let Application = () => {
   return (
@@ -18,7 +20,7 @@ let appRouter = createBrowserRouter([
   {
     path: "/",
     element: <Application />,
-    children: [{ path: "/", element: <Home /> }],
+    children: [{ path: "/", element: <Home /> },{path:'/newarrival',element:<NewArrival/>},{path:'/aboutus',element:<AboutUs/>}],
   },
   { path: "*", element: <Error /> },
 ]);
