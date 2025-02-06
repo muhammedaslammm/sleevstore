@@ -1,0 +1,1 @@
+export const image_url='https://m.media-amazon.com/images/I/'

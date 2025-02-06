@@ -4,5 +4,9 @@
 
 
 body{
-    height: 1000vh;
+    background-color: rgb(251, 251, 251);
+}
+
+a.active hr{
+    width: 100%;
 }

@@ -1,27 +1,45 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 
 let Header = () => {
   let [moreVisible, setMoreVisible] = useState(false);
   return (
     <>
-      <header className="header fixed left-0 top-0 w-full bg-black text-white">
-        <div className="header__content w-[80%] mx-auto flex justify-between items-center py-[.3rem]">
-          <div className="header__logo font-semibold text-[1.2rem]">
-            sleevstore
-          </div>
-          <ul className="header__middle hidden sm:flex gap-[1.4rem] ">
+      <header className="header fixed left-0 top-0 w-full bg-neutral-900 text-white z-10">
+        <div className="header__content w-[90%] mx-auto flex justify-between items-center py-[.3rem] sm:py-[.4rem] md:w-[85%] md:py-[.4rem] lg:py-[.8rem] xl:py-[.9rem] xl:w-[76%]">
+          <Link to="/">
+            <div className="header__logo font-semibold text-[1.2rem] sm:text-[1.3rem] md:text-[1.4rem] lg:text-[1.7rem] xl:text-[1.9rem]">
+              sleevstore
+            </div>
+          </Link>
+
+          <ul className="header__middle hidden sm:flex text-[.9rem] gap-[1.4rem] md:text-[.91rem] md:gap-[1.5rem] lg:text-[1.15rem] lg:gap-[1.8rem] xl:text-[1.25rem]">
             <li>
-              <Link to="/">Home</Link>
+              <NavLink to="/">
+                <p>Home</p>
+                <hr className="w-0 transition-all" />
+              </NavLink>
             </li>
             <li>
-              <Link to="/newarrival">New Arrivals</Link>
+              <NavLink to="/collections/all-products">
+                <p>Collections</p>
+                <hr className="w-0 transition-all" />
+              </NavLink>
             </li>
             <li>
-              <Link to="/aboutus">About Us</Link>
+              <NavLink to="/newarrival">
+                <p>New Arrival</p>
+                <hr className="w-0 transition-all" />
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/aboutus">
+                <p>About Us</p>
+                <hr className="w-0 transition-all" />
+              </NavLink>
             </li>
           </ul>
-          <div className="header__right flex gap-[.85rem] text-[.85rem]">
+          <div className="header__right flex gap-[.85rem] text-[.85rem] sm:text-[.9rem] md:text-[1rem] md:gap[.95rem] lg:text-[1.2rem] lg:gap-[1.2rem] xl:text-[1.3rem] xl:gap-[1.4rem]">
             <div className="header__wishlist">
               <i className="fa-solid fa-heart"></i>
             </div>
@@ -31,7 +49,7 @@ let Header = () => {
             <div className="header__profile">
               <i className="fa-solid fa-user"></i>
             </div>
-            <div className="header__more">
+            <div className="header__more sm:hidden">
               <i
                 className="fa-solid fa-bars"
                 onClick={() => setMoreVisible(true)}
@@ -41,11 +59,11 @@ let Header = () => {
         </div>
       </header>
       <div
-        className={`header__more-content fixed overflow-hidden bg-neutral-900 left-0 top-0 bottom-0 ${
+        className={`header__more-content fixed overflow-hidden bg-neutral-900 left-0 top-0 bottom-0 z-20 ${
           moreVisible ? "w-full" : "w-0"
         }`}
       >
-        <div className="more-content__top text-white flex justify-between items-center w-[80%] mx-auto py-[.3rem]">
+        <div className="more-content__top text-white flex justify-between items-center w-[90%] mx-auto py-[.3rem]">
           <div className="logo text-[1.2rem] font-semibold">sleevstore</div>
           <i
             class="fa-solid fa-xmark text-[1.1rem] "
@@ -57,9 +75,18 @@ let Header = () => {
             <Link
               to="/"
               onClick={() => setMoreVisible(false)}
-              className="mx-[3.5rem]  "
+              className="mx-[2rem]  "
             >
               Home
+            </Link>
+          </li>
+          <li className="hover:bg-neutral-800 py-[.5rem] cursor-pointer">
+            <Link
+              to="/collections/all-products"
+              className="mx-[2rem]"
+              onClick={() => setMoreVisible(false)}
+            >
+              Collections
             </Link>
           </li>
 
@@ -67,7 +94,7 @@ let Header = () => {
             <Link
               to="/newarrival"
               onClick={() => setMoreVisible(false)}
-              className="mx-[3.5rem] "
+              className="mx-[2rem] "
             >
               New Arrival
             </Link>
@@ -77,7 +104,7 @@ let Header = () => {
             <Link
               to="/aboutus"
               onClick={() => setMoreVisible(false)}
-              className="mx-[3.5rem] "
+              className="mx-[2rem] "
             >
               About Us
             </Link>
