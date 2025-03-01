@@ -1,73 +1,95 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import { StoreContext } from "../context/storeContext";
+import useFilteredProducts from "../customeHooks/useFilteredProducts";
+import usePagination from "../customeHooks/usePagination";
 import ProductCard from "../components/ProductCard";
+import SideBar from "../components/SideBar";
+import CollectionSearch from "../components/CollectionSearch";
+import CollectionSort from "../components/CollectionSort";
+import PaginationBlock from "../components/PaginationBlock";
 
 const Collections = () => {
-  let path = useParams();
-  const { categories, products } = useContext(StoreContext);
-  let [filter, setFilter] = useState("Select");
+  let { category } = useParams();
+  console.log("category:", category);
+  const { products } = useContext(StoreContext);
+  let [filters, setFilters] = useState({
+    category: category,
+    price_range: null,
+  });
+  let [sort, setSort] = useState("Random");
   let [myProducts, setMyProducts] = useState([]);
-  useEffect(() => {
-    if (path.category === "all-products") setFilter(`All Products`);
-    else setFilter(path.category.split("-").join(" "));
-  }, []);
+  let [displayProducts, setDisplayProducts] = useState([]);
+  let [pageNumber, setPageNumber] = useState(1);
+  let [totalPages, setTotalPages] = useState(0);
+  let [sidebar, setSidebar] = useState(false);
+  console.log("filters:", filters);
 
   useEffect(() => {
-    let allproducts = products.filter((product) => {
-      if (path.category === "all-products") return product;
-      else if (product.category === path.category) return product;
-    });
-    setMyProducts(allproducts);
-  }, []);
-
-  const manageFilter = (category) => {
-    let myProducts = products.filter(
-      (product) => product.category === category
+    let filteredProducts = useFilteredProducts(
+      products,
+      filters,
+      sort,
+      category
     );
-    setMyProducts(myProducts);
-    setFilter(category.split("-").join(" "));
+    console.log("products:", filteredProducts);
+    setPageNumber(1);
+    setMyProducts(filteredProducts);
+  }, [filters, sort]);
+
+  useEffect(() => {
+    let { products, totalPages } = usePagination(myProducts, pageNumber);
+    setDisplayProducts(products);
+    setTotalPages(totalPages);
+  }, [pageNumber, myProducts]);
+
+  let handleFilters = (filterField, value) => {
+    setFilters((previousFilters) => ({
+      ...previousFilters,
+      [filterField]: previousFilters[filterField] === value ? null : value,
+    }));
   };
 
   return (
-    <div className="sleevestore__collections relative mt-[3.1rem] s:mt-[3.2rem] sm:mt-[3.6rem] md:mt-[3.7rem] w-[90%] md:w-[85%] mx-auto ">
-      <div className="collections__top flex w-full justify-between items-center gap-[1rem]">
-        <form action="" className="flex gap-[.3rem] w-[60%] s:w-[50%] ">
-          <input
-            type="text"
-            className="border border-neutral-400 outline-none px-[.5em] s:py-[.1rem] flex-grow w-[70%]"
-          />
-          <button className="bg-neutral-950 text-white px-[.8rem] py-[.2rem]  rounded-[.2rem] w-[20%] text-[.65rem] sm:text-[.75rem] md:text-[.85rem] text-center capitalize flex justify-center items-center">
-            search
-          </button>
-        </form>
-        <div className="collections__filter-box group relative w-[35%] s:w-[30%]">
-          <div className="filter text-[.65rem] sm:text-[.75rem] md:text-[.8rem] border border-neutral-600/60 py-[.2rem] s:py-[.3rem] px-[.3rem] md:px-[.5rem] capitalize">
-            {`Filter > ${filter}`}
-          </div>
-          <ul className="filter__options absolute hidden group-hover:block bg-neutral-900 text-white w-full right-0 py-[.2rem] px-[.5rem]">
-            {categories.map((category, index) => (
-              <li
-                key={index}
-                className="py-[.5rem] capitalize text-[.65rem] hover:bg-neutral-800"
-                onClick={() => manageFilter(category.endpoint)}
-              >
-                {category.endpoint.split("-").join(" ")}
-              </li>
-            ))}
-          </ul>
+    <div className="sleevestore__collections relative mt-[2.41rem] s:mt-[2.4rem] sm:mt-[2.5rem] md:mt-[2.8rem] lg:mt-[3rem] w-[90%] md:w-[85%] xl:w-[77%] mx-auto mb-[2rem]">
+      <div className="collections__top z-10  flex w-full justify-between items-center gap-[1rem] bg-bgPageColor border-b border-gray-300 sticky py-[.55rem] s:py-[.6rem] sm:py-[.7rem] lg:py-[.75rem] xl:py-[.65rem] top-[2.4rem] sm:top-[2.8rem] md:top-[2.9rem] lg:top-[3.175rem] xl:top-[3.15rem] ">
+        <CollectionSearch />
+        <CollectionSort sort={sort} setSort={setSort} />
+      </div>
+      <div
+        className={`collections__section--body flex ${
+          sidebar ? "gap-[.8rem]" : "gap-[.1rem] s:gap-[.7rem]"
+        } md:gap-[.8rem]`}
+      >
+        <SideBar
+          sidebar={sidebar}
+          setSidebar={setSidebar}
+          handleFilters={handleFilters}
+          path={category}
+        />
+        <div className="collection__products w-[80%] s:w-full  grid grid-cols-[minmax(11rem,1fr)] s:grid-cols-[repeat(auto-fit,minmax(11rem,1fr))]  sm:grid-cols-[repeat(auto-fit,minmax(11rem,1fr))] lg:grid-cols-[repeat(auto-fit,minmax(12.2rem,1fr))] xl:grid-cols-[repeat(auto-fit,minmax(13rem,1fr))] justify-center  mx-auto mt-[1.5rem] mb-[1.5rem] gap-y-[2rem] gap-x-[.5rem] xl:gap-x-[.8rem]">
+          {displayProducts.map((product) => (
+            <Link
+              key={product.id}
+              to={`/collections/${product.category}/${product.id}`}
+              className="relative bg-white border border-neutral-400/80 rounded-md"
+            >
+              <ProductCard
+                name={product.name}
+                price={product.price}
+                description={product.description}
+                image={product.image}
+                quantity={product.quantity}
+              />
+            </Link>
+          ))}
         </div>
       </div>
-      <div className="collection__products w-[80%] s:w-full  grid grid-cols-[minmax(11rem,1fr)] s:grid-cols-2  sm:grid-cols-3 justify-center  mx-auto mt-[1.5rem] mb-[5rem] gap-y-[2rem] gap-x-[.5rem]">
-        {myProducts.map((product) => (
-          <ProductCard
-            name={product.name}
-            price={product.price}
-            description={product.description}
-            image={product.image}
-          />
-        ))}
-      </div>
+      <PaginationBlock
+        pageNumber={pageNumber}
+        setPageNumber={setPageNumber}
+        totalPages={totalPages}
+      />
     </div>
   );
 };

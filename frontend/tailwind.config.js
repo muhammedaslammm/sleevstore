@@ -10,6 +10,9 @@ module.exports = {
         xs: "330px",
         s: "430px",
       },
+      colors: {
+        bgPageColor: "#FBFBFB",
+      },
     },
   },
   plugins: [],

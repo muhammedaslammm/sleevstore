@@ -1,5 +1,6 @@
 const products = [
   {
+    id: 121,
     name: "Black Classic Five-Sleeve T-Shirt",
     price: 999,
     materials: ["Cotton", "Polyester"],
@@ -8,13 +9,14 @@ const products = [
     color: "Black",
     description:
       "A classic black t-shirt with a five-sleeve design for a unique style.",
-    quantity: 40,
+    quantity: 0,
     date: "2024-07-31",
     image: "https://m.media-amazon.com/images/I/519YAAJVZ1L._SY741_.jpg",
     best_seller: true,
     category: "five-sleeves",
   },
   {
+    id: 123,
     name: "Olive Green Premium Five-Sleeve T-Shirt",
     price: 1099,
     materials: ["Cotton", "Elastane"],
@@ -30,6 +32,7 @@ const products = [
     category: "five-sleeves",
   },
   {
+    id: 124,
     name: "Red Casual Five-Sleeve T-Shirt",
     price: 1199,
     materials: ["Organic Cotton", "Fleece"],
@@ -44,6 +47,7 @@ const products = [
     category: "five-sleeves",
   },
   {
+    id: 125,
     name: "Black Modern Fit Five-Sleeve T-Shirt",
     price: 1299,
     materials: ["Polyester", "Spandex"],
@@ -59,6 +63,7 @@ const products = [
     category: "five-sleeves",
   },
   {
+    id: 126,
     name: "Olive Green V-Neck Five-Sleeve T-Shirt",
     price: 1399,
     materials: ["Cotton", "Rayon"],
@@ -74,6 +79,7 @@ const products = [
     category: "five-sleeves",
   },
   {
+    id: 131,
     name: "Red Relaxed Fit Five-Sleeve T-Shirt",
     price: 1499,
     materials: ["Cotton", "Polyester"],
@@ -88,6 +94,7 @@ const products = [
     category: "five-sleeves",
   },
   {
+    id: 132,
     name: "Black Five-Sleeve T-Shirt with Print",
     price: 1599,
     materials: ["100% Cotton"],
@@ -103,6 +110,7 @@ const products = [
     category: "five-sleeves",
   },
   {
+    id: 134,
     name: "Olive Green Slim Fit Five-Sleeve T-Shirt",
     price: 1699,
     materials: ["Recycled Cotton", "Bamboo"],
@@ -118,6 +126,7 @@ const products = [
     category: "five-sleeves",
   },
   {
+    id: 151,
     name: "Red Performance Five-Sleeve T-Shirt",
     price: 1799,
     materials: ["Polyester", "Spandex"],
@@ -133,6 +142,7 @@ const products = [
     category: "five-sleeves",
   },
   {
+    id: 152,
     name: "Black Urban Style Five-Sleeve T-Shirt",
     price: 1899,
     materials: ["Cotton", "Lycra"],
@@ -147,6 +157,7 @@ const products = [
     category: "five-sleeves",
   },
   {
+    id: 153,
     name: "Classic Black Pullover Hoodie",
     price: 1499,
     materials: ["Cotton", "Polyester"],
@@ -155,13 +166,14 @@ const products = [
     color: "Black",
     description:
       "A timeless black hoodie with a soft interior and adjustable hood.",
-    quantity: 40,
+    quantity: 0,
     date: "2024-07-31",
     image: "https://m.media-amazon.com/images/I/31B+tV6-28L.jpg",
     best_seller: true,
     category: "hoodies",
   },
   {
+    id: 154,
     name: "Olive Green Zip-Up Hoodie",
     price: 1599,
     materials: ["Cotton", "Elastane"],
@@ -170,12 +182,13 @@ const products = [
     color: "Olive Green",
     description:
       "A stylish zip-up hoodie with a comfortable fit for everyday wear.",
-    quantity: 35,
+    quantity: 2,
     date: "2024-07-30",
     image: "https://m.media-amazon.com/images/I/61cWmNXsIlL._SX569_.jpg",
     category: "hoodies",
   },
   {
+    id: 155,
     name: "White Fleece-Lined Hoodie",
     price: 1699,
     materials: ["Organic Cotton", "Fleece"],
@@ -190,6 +203,7 @@ const products = [
     category: "hoodies",
   },
   {
+    id: 161,
     name: "Black Athletic Fit Hoodie",
     price: 1799,
     materials: ["Polyester", "Spandex"],
@@ -204,6 +218,7 @@ const products = [
     category: "hoodies",
   },
   {
+    id: 162,
     name: "Olive Green Oversized Hoodie",
     price: 1899,
     materials: ["Cotton", "Rayon"],
@@ -218,6 +233,7 @@ const products = [
     category: "hoodies",
   },
   {
+    id: 163,
     name: "White Minimalist Hoodie",
     price: 1499,
     materials: ["Cotton", "Polyester"],
@@ -232,6 +248,7 @@ const products = [
     category: "hoodies",
   },
   {
+    id: 166,
     name: "Black Heavyweight Hoodie",
     price: 1999,
     materials: ["100% Cotton"],
@@ -240,12 +257,13 @@ const products = [
     color: "Black",
     description:
       "A premium heavyweight hoodie designed for ultimate warmth and durability.",
-    quantity: 25,
+    quantity: 0,
     date: "2024-07-25",
     image: "https://m.media-amazon.com/images/I/51W0YDiJobL._SX569_.jpg",
     category: "hoodies",
   },
   {
+    id: 168,
     name: "Olive Green Eco-Friendly Hoodie",
     price: 1699,
     materials: ["Recycled Cotton", "Bamboo"],
@@ -259,6 +277,7 @@ const products = [
     category: "hoodies",
   },
   {
+    id: 170,
     name: "White Performance Hoodie",
     price: 1799,
     materials: ["Polyester", "Spandex"],
@@ -273,6 +292,7 @@ const products = [
     category: "hoodies",
   },
   {
+    id: 171,
     name: "Black Urban Street Hoodie",
     price: 1899,
     materials: ["Cotton", "Lycra"],
@@ -286,6 +306,7 @@ const products = [
     category: "hoodies",
   },
   {
+    id: 172,
     name: "Classic Black SweatShirt",
     price: 1999,
     materials: ["Cotton", "Polyester"],
@@ -301,6 +322,7 @@ const products = [
     category: "sweat-shirts",
   },
   {
+    id: 173,
     name: "Cream Oversized Sweatshirt",
     price: 2499,
     materials: ["Fleece", "Cotton"],
@@ -316,6 +338,7 @@ const products = [
     category: "sweat-shirts",
   },
   {
+    id: 174,
     name: "White Minimalist Sweatshirt",
     price: 2199,
     materials: ["Cotton", "Elastane"],
@@ -331,6 +354,7 @@ const products = [
     category: "sweat-shirts",
   },
   {
+    id: 175,
     name: "Red Streetwear Sweatshirt",
     price: 2299,
     materials: ["Cotton", "Polyester"],
@@ -347,6 +371,7 @@ const products = [
     category: "sweat-shirts",
   },
   {
+    id: 176,
     name: "Black Zip-up SweatShirt",
     price: 2699,
     materials: ["Cotton", "Spandex"],
@@ -361,6 +386,7 @@ const products = [
     category: "sweat-shirts",
   },
   {
+    id: 177,
     name: "Cream Fleece Hoodie",
     price: 2799,
     materials: ["Fleece", "Cotton"],
@@ -375,6 +401,7 @@ const products = [
     category: "sweat-shirts",
   },
   {
+    id: 178,
     name: "White Graphic Sweatshirt",
     price: 2399,
     materials: ["Cotton", "Polyester"],
@@ -390,6 +417,7 @@ const products = [
     category: "sweat-shirts",
   },
   {
+    id: 185,
     name: "Red Pullover Sweatshirt",
     price: 2099,
     materials: ["Cotton", "Polyester"],

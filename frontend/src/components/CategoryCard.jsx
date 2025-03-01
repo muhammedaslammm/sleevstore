@@ -8,7 +8,7 @@ const CategoryCard = ({ category }) => {
           className=" object-cover rounded-md w-full h-full"
         />
       </div>
-      <p className="absolute z-10 bottom-[1rem] text-[.95rem] sm:text-[1.05rem] md:text-[1.2rem] font-semibold text-white bg-black/90 w-full text-center capitalize py-[.1rem]">
+      <p className="absolute bottom-[1rem] text-[.95rem] sm:text-[1.05rem] md:text-[1.2rem] font-semibold text-white bg-black/90 w-full text-center capitalize py-[.1rem]">
         {category.category_name}
       </p>
     </div>

@@ -4,7 +4,7 @@ import { StoreContext } from "../context/storeContext";
 const Footer = () => {
   let { email, phone, address } = useContext(StoreContext);
   return (
-    <footer className="footer mt-[2rem] bg-neutral-900 text-white py-[2rem] ">
+    <footer className="footer bg-neutral-900 text-white py-[2rem] ">
       <div className="footer__content w-[90%] mx-auto">
         <div className="footer__top flex flex-col gap-[.8rem] justify-between">
           <div className="footer__sec1">

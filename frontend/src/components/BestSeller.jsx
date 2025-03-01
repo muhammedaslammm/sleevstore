@@ -14,7 +14,7 @@ const BestSeller = () => {
     setBestSellers(bestsellingProducts);
   }, []);
   return (
-    <div className="best__seller w-[90%] mx-auto mt-[3rem] md:w-[85%]">
+    <div className="best__seller w-[90%] mx-auto mt-[3rem] sm:w-[75%] md:w-[65%] lg:w-[55%] xl:w-[45%]">
       <Title title={"Best Selling Products"} />
       <div className="best-selling__products grid xs:grid-cols-[14rem] s:grid-cols-[14rem,14rem] justify-center gap-[4rem] s:gap-[1rem] s:gap-y-[3rem] sm:grid-cols-2 mt-[.5rem]">
         {bestSellers.map((product, index) => (

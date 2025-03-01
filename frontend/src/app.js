@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { Toaster } from "sonner";
 import Error from "./components/Error";
 import Header from "./components/Header";
 import Home from "./pages/Home.jsx";
@@ -9,14 +10,20 @@ import AboutUs from "./pages/AboutUs.jsx";
 import ShopContextProvider from "./context/storeContext.jsx";
 import Footer from "./components/Footer.jsx";
 import Collections from "./pages/Collections.jsx";
+import ProductPage from "./pages/ProductPage.jsx";
+import CartPage from "./pages/CartPage.jsx";
+import Checkout from "./pages/Checkout.jsx";
 
 let Application = () => {
   return (
-    <div className="application">
-      <Header />
-      <Outlet />
-      <Footer />
-    </div>
+    <>
+      <Toaster position="top-center" />
+      <div className="application flex flex-col">
+        <Header />
+        <Outlet />
+        <Footer />
+      </div>
+    </>
   );
 };
 
@@ -29,6 +36,9 @@ let appRouter = createBrowserRouter([
       { path: "/newarrival", element: <NewArrival /> },
       { path: "/aboutus", element: <AboutUs /> },
       { path: "/collections/:category", element: <Collections /> },
+      { path: "/collections/:category/:productid", element: <ProductPage /> },
+      { path: "/cart", element: <CartPage /> },
+      { path: "/checkout", element: <Checkout /> },
     ],
   },
   { path: "*", element: <Error /> },
